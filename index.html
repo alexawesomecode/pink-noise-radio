@@ -1,17 +1,63 @@
-<html>
+ <html>
 
 <head>
     <title> pink noise radio station </title>
     <link rel="stylesheet" type="text/css" href="custom.css">
 </head>
 
-<body>
-    <h1> Play to focus/relax/study...</h1>
-    <audio controls="controls">
+<body><div class="container">
+  <div class="pink-logo"><h1 class="highlight">pink noisy </h1></div>
+  <div class="subtitle"><h2> tune in and listen to the best pink noise for studyind & focusing.</h2></div>
+  <div class="radio-circle"></div>
+    <audio class="radio-classic" >
           
          <source src="http://www.hochmuth.com/mp3/Tchaikovsky_Nocturne__orch.mp3" type="audio/mpeg" />
-          Your browser does not support the audio element.
+          
       </audio>
 
+        <audio class="radio-smooth">
+            <source src="https://ia800203.us.archive.org/11/items/TenMinutesOfWhiteNoisePinkNoiseAndBrownianNoise/BrownianNoise_64kb.mp3" type="audio/mpeg"></audio>     
+
+        <audio class="radio-pink"> 
+             <source src="https://ia800203.us.archive.org/11/items/TenMinutesOfWhiteNoisePinkNoiseAndBrownianNoise/PinkNoise_64kb.mp3" type="audio/mpeg"></audio>
+
+
+</div>
 </body>
+
+    <script>
+    let flag = 0;
+    let playing = 1;  
+    const radio = document.querySelector('.radio-circle');
+    radio.addEventListener("click", playRadio);
+    function playRadio() {
+  
+        const audio1 = document.querySelector('.radio-pink');
+        const audio2 = document.querySelector('.radio-smooth');
+        const audio3 = document.querySelector('.radio-classic');
+        
+        if (playing == 1) {
+            if (flag == 1) { audio3.pause(); }
+        audio1.play();
+        playing = 2;
+        return;
+            
+    }
+    
+        if (playing == 2) { 
+            audio1.pause()
+            audio2.play();
+            playing = 3;
+        return;
+        }
+
+        if (playing == 3) {
+            audio2.pause()
+            audio3.play();
+            playing = 1;
+            flag = 1;
+            return;
+        }
+    }
+    </script>
 <html>
